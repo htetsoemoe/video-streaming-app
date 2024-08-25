@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import Header from '../components/Header'
 
 const Home = () => {
     const [videos, setVideos] = useState([])
@@ -21,23 +22,26 @@ const Home = () => {
     console.log(videos)
 
     return (
-        <div className='mt-10 p-10 bg-slate-600'>
-            <div className="grid grid-cols-3 gap-3">
-                {
-                    videos.map((video) => (
-                        <div className="p-5 bg-yellow-300" key={video.id}>
-                            <Link to={`/player/${video.id}`}>
-                                <div className="">
-                                    <img src={`http://localhost:3500${video.poster}`} alt={video.name} />
+        <div className='w-[90%] mx-auto my-10'>
+            <Header />
+            <div className='mt-10 p-10 bg-slate-600'>
+                <div className="grid grid-cols-3 gap-3">
+                    {
+                        videos.map((video) => (
+                            <div className="p-5 bg-yellow-300" key={video.id}>
+                                <Link to={`/player/${video.id}`}>
                                     <div className="">
-                                        <p className="">{video.name}</p>
-                                        <p className="">{video.duration}</p>
+                                        <img src={`http://localhost:3500${video.poster}`} alt={video.name} />
+                                        <div className="">
+                                            <p className="">{video.name}</p>
+                                            <p className="">{video.duration}</p>
+                                        </div>
                                     </div>
-                                </div>
-                            </Link>
-                        </div>
-                    ))
-                }
+                                </Link>
+                            </div>
+                        ))
+                    }
+                </div>
             </div>
         </div>
     )
