@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Header from '../components/Header'
+import Footer from '../components/Footer'
 
 const Home = () => {
     const [videos, setVideos] = useState([])
@@ -19,7 +20,7 @@ const Home = () => {
 
         fetchVideos()
     }, [])
-    console.log(videos)
+    // console.log(videos)
 
     return (
         <div className='w-[90%] mx-auto my-10'>
@@ -31,7 +32,7 @@ const Home = () => {
                             <div className="p-5 bg-yellow-300" key={video.id}>
                                 <Link to={`/player/${video.id}`}>
                                     <div className="">
-                                        <img src={`http://localhost:3500${video.poster}`} alt={video.name} />
+                                        <img src={`http://localhost:3500/video/${video.id}/poster`} alt={video.name} />
                                         <div className="">
                                             <p className="">{video.name}</p>
                                             <p className="">{video.duration}</p>
@@ -43,6 +44,7 @@ const Home = () => {
                     }
                 </div>
             </div>
+            <Footer />
         </div>
     )
 }
