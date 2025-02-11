@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
-import { useParams } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
+import { IoHome } from "react-icons/io5";
 
 const Player = () => {
   const { id } = useParams()
@@ -24,12 +25,17 @@ const Player = () => {
 
   return (
     <div className='w-[90%] mx-auto my-10'>
-      <Header />
+      {/* <Header /> */}
       <div className="mt-10 p-10 bg-slate-600">
+        <Link to={'/'}>
+          <div class="p-3 bg-yellow-500 w-10 text-white rounded-full flex justify-center items-center hover:bg-yellow-400 transition">
+            <IoHome />
+          </div>
+        </Link>
         <div className="">
           <video
-            controls muted autoPlay crossOrigin='anonymous'
-            className='w-[70%] mx-auto'
+            controls unmuted autoPlay crossOrigin='anonymous'
+            className='w-[80%] mx-auto'
           >
             <source src={`http://localhost:3500/video/${id}`} type="video/mp4"></source>
             <track label="English" kind="captions" srcLang="en" src={`http://localhost:4000/video/${id}/caption`} default></track>
